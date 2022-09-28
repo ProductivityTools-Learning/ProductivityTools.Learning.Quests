@@ -34,12 +34,13 @@
 //[7,8,20]
 
 
-// See https://aka.ms/new-console-template for more information
+
 Console.WriteLine("Hello, World!");
 var wordAndPosition = new Dictionary<string, List<int>>();
 wordAndPosition.Add("cat", new List<int>() { 0, 5, 6 });
 wordAndPosition.Add("dog", new List<int>() { 3, 9, 11 });
 new WordDistance(wordAndPosition).Distance("cat", "dog");
+new WordDistance(wordAndPosition).DistanceOptimized("cat", "dog");
 
 class WordDistance
 {
@@ -63,6 +64,8 @@ class WordDistance
     }
 
 
+    //Here idea is to create additional structure to which program will push words in order
+    //later it is simple for to check the two distance between two neighbors 
     public int Distance(string wordA, string wordB)
     {
         List<int> positionA = wordAndPosition[wordA];
@@ -84,7 +87,7 @@ class WordDistance
                 wordBIndex++;
             }
         }
-
+        //This is important part, I forgot about it.
         while (wordAIndex < positionA.Count)
         {
             orderedWords.Add(new WordPosition(wordA, positionA[wordAIndex]));
@@ -103,14 +106,65 @@ class WordDistance
         {
             if (orderedWords[i].Word != currentElement.Word)
             {
-                
-                var min=Math.Abs(orderedWords[i].Position - currentElement.Position);
+
+                var min = Math.Abs(orderedWords[i].Position - currentElement.Position);
                 if (min < result)
                 {
-                    result= min;
+                    result = min;
                 }
-                currentElement.Word = orderedWords[i].Word;
+                currentElement = orderedWords[i];
             }
+        }
+
+        Console.WriteLine(result);
+        return result;
+    }
+
+
+    //here the idea is to iterate through two arrays and find the smallest distance,
+    //more optimized but not so clean solution
+    public int DistanceOptimized(string wordA, string wordB)
+    {
+        int result = int.MaxValue;
+
+        List<int> positionA = wordAndPosition[wordA];
+        List<int> positionB = wordAndPosition[wordB];
+
+        int wordAIndex = 0, wordBIndex = 0;
+
+        Action<int, int> calculateMin = (wordAIndex, wordBIndex) =>
+        {
+            int localMin = Math.Abs(positionA[wordAIndex] - positionB[wordBIndex]);
+            if (localMin < result)
+            {
+                result = localMin;
+            }
+        };
+
+        while (wordAIndex < positionA.Count && wordBIndex < positionB.Count)
+        {
+            if (positionA[wordAIndex] < positionB[wordBIndex])
+            {
+                calculateMin(wordAIndex, wordBIndex);
+                wordAIndex++;
+            }
+            else if (positionB[wordBIndex] < positionA[wordAIndex])
+            {
+                calculateMin(wordAIndex, wordBIndex);
+                wordBIndex++;
+            }
+        }
+
+        while (wordAIndex < positionA.Count)
+        {
+            calculateMin(wordAIndex, positionB.Count-1);
+            wordAIndex++;
+        }
+
+        while (wordBIndex < positionB.Count)
+        {
+            calculateMin(positionA.Count-1, wordBIndex);
+            wordBIndex++;
         }
 
         Console.WriteLine(result);
