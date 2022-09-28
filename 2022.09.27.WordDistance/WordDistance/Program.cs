@@ -36,12 +36,32 @@
 
 // See https://aka.ms/new-console-template for more information
 Console.WriteLine("Hello, World!");
-new WordDistance().Distance("cat","dog");
+var wordAndPosition = new Dictionary<string, List<int>>();
+wordAndPosition.Add("cat", new List<int>() { 0, 5, 6 });
+wordAndPosition.Add("dog", new List<int>() { 3, 9, 11 });
+new WordDistance(wordAndPosition).Distance("cat", "dog");
 
 class WordDistance
 {
 
-    Dictionary<string,List<int>> wordAndPosition=new Dictionary<string,List<int>>();
+    class WordPosition
+    {
+        public WordPosition(string word, int position)
+        {
+            this.Word = word;
+            this.Position = position;
+        }
+        public string Word;
+        public int Position;
+    }
+
+    readonly Dictionary<string, List<int>> wordAndPosition = new Dictionary<string, List<int>>();
+
+    public WordDistance(Dictionary<string, List<int>> wordAndPosition)
+    {
+        this.wordAndPosition = wordAndPosition;
+    }
+
 
     public int Distance(string wordA, string wordB)
     {
@@ -49,7 +69,52 @@ class WordDistance
         List<int> positionB = wordAndPosition[wordB];
 
 
-        throw new NotImplementedException();
+        List<WordPosition> orderedWords = new List<WordPosition>();
+        int wordAIndex = 0, wordBIndex = 0;
+        while (wordAIndex < positionA.Count && wordBIndex < positionB.Count)
+        {
+            if (wordAIndex < positionA.Count && positionA[wordAIndex] < positionB[wordBIndex])//0,3
+            {
+                orderedWords.Add(new WordPosition(wordA, positionA[wordAIndex]));
+                wordAIndex++;
+            }
+            else if (wordBIndex < positionB.Count && positionB[wordBIndex] < positionA[wordAIndex])
+            {
+                orderedWords.Add(new WordPosition(wordB, positionB[wordBIndex]));
+                wordBIndex++;
+            }
+        }
+
+        while (wordAIndex < positionA.Count)
+        {
+            orderedWords.Add(new WordPosition(wordA, positionA[wordAIndex]));
+            wordAIndex++;
+        }
+
+        while (wordBIndex < positionB.Count)
+        {
+            orderedWords.Add(new WordPosition(wordB, positionB[wordBIndex]));
+            wordBIndex++;
+        }
+
+        var result = int.MaxValue;
+        var currentElement = orderedWords[0];
+        for (int i = 1; i < orderedWords.Count; i++)
+        {
+            if (orderedWords[i].Word != currentElement.Word)
+            {
+                
+                var min=Math.Abs(orderedWords[i].Position - currentElement.Position);
+                if (min < result)
+                {
+                    result= min;
+                }
+                currentElement.Word = orderedWords[i].Word;
+            }
+        }
+
+        Console.WriteLine(result);
+        return result;
     }
 }
 
