@@ -33,3 +33,25 @@ Repository is used to store different coding quests
 - For invoking several times: create a dictionary from words to have positions to the locations of the words. For this dictionary also two solutions
   -  Use additional structure in which we will again order words and then calculate distance between two neightbors - easier to debug, more time and space complex
   - Calcualte distance on the fly - optimum solution
+
+
+## Word steps
+
+[source](https://www.careercup.com/question?id=5114303424233472)
+
+  ```
+  Given a dictionary containing a list of words, a starting word, and an ending word, return the minimum number of steps to transform the starting word into the ending word.
+
+A step involves changing one letter at a time to a valid word that is present in the dictionary.
+
+Return null if it is impossible to transform the starting word into the ending word using the dictionary.
+
+Example:
+
+Starting word: cat
+Ending word: dog
+
+cat -> cot -> cog -> dog ('cot' and 'cog' are in the dictionary)
+
+return 3
+```
