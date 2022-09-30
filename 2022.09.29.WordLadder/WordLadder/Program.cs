@@ -118,7 +118,6 @@ public class WordLadder
                 }
             }
         }
-
     }
 
     public void GetPath(string startWord, string endWord)
