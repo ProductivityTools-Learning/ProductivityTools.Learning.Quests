@@ -28,15 +28,15 @@ public class WordTreeNode
 }
 public class WordLadder
 {
-
-    private class RemovedLetter
-    {
-        public string Letter { get; set; }
-    }
-
+    //contains American dictionary
     private readonly string[] Dictionary;
+
+    //Contains dictionary of n-letters word (in our example 4)
     private readonly List<string> DictionaryOfNLettersWord = new List<string>();
 
+    //array which contains dictionaries in the format, part of the word + letters which create word together with the part
+    //for example dictionary in n-1 position will contain 3 first letter of the word and in the
+    //dictionary value, rest of the word
     private Dictionary<string, List<string>>[] WordParts;
 
     private WordTreeNode SourceNode;
