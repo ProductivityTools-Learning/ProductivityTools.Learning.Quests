@@ -99,14 +99,14 @@ public class WordLadder
             if (!visited.Contains(node.Word))
             {
                 visited.Add(node.Word);
-                for (int i = 0; i < startWord.Length; i++)
+                for (int i = 0; i < node.Word.Length; i++)
                 {
-                    var wordPart = startWord.Substring(0, i) + startWord.Substring(i + 1, startWord.Length - 1 - i);
+                    var wordPart = node.Word.Substring(0, i) + node.Word.Substring(i + 1, node.Word.Length - 1 - i);
                     if (this.WordParts[i].ContainsKey(wordPart))
                     {
                         this.WordParts[i][wordPart].ForEach(x =>
                         {
-                            var fullWord = startWord.Substring(0, i) + x + startWord.Substring(i + 1, startWord.Length - 1 - i);
+                            var fullWord = node.Word.Substring(0, i) + x + node.Word.Substring(i + 1, node.Word.Length - 1 - i);
                             if (!visited.Contains(fullWord))
                             {
                                 var newNode = new WordGraphNode(fullWord);
@@ -120,13 +120,61 @@ public class WordLadder
         }
     }
 
+    private Stack<WordGraphNode> DFS(string endWord)
+    {
+        Stack<WordGraphNode> path = new Stack<WordGraphNode>();
+        var start = this.SourceNode;
+        if (start.Word == endWord)
+        {
+            return path;
+        }
+
+        path.Push(start);
+        DFSStep(endWord, start, path);
+        return path; 
+    }
+
+    private bool DFSStep(string endWord,WordGraphNode currentNode, Stack<WordGraphNode> path)
+    {
+        foreach (WordGraphNode node in currentNode.Nodes)
+        {
+            path.Push(node);
+            if (node.Word==endWord)
+            {
+                return true;
+            }
+            else
+            {
+                var result = DFSStep(endWord, node, path);
+                if (result==false)
+                {
+                    path.Pop();
+                }
+                else
+                {
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+
+    private void PrintResult(Stack<WordGraphNode> steps)
+    {
+        foreach (var item in steps)
+        {
+            Console.WriteLine($"{item.Word} ");
+        }
+    }
+
     public void GetPath(string startWord, string endWord)
     {
         int wordLength = startWord.Length;
         FilterDictionary(wordLength);
         LoadDictoinaryOfNLettersWord(wordLength);
         LoadGraph(startWord);
-
-        throw new NotImplementedException();
+        var result=DFS(endWord);
+        PrintResult(result);
+        Console.ReadLine();
     }
 }
