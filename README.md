@@ -37,6 +37,7 @@ Repository is used to store different coding quests
 
 ## Word ladder
 
+### Quest
 [source](https://leetcode.com/problems/word-ladder/)
 
   ```
@@ -50,13 +51,12 @@ Example:
 
 transformWord(‘DAMP’, ‘LIKE’)
 Output: DAMP->LAMP->LIMP->LIME->LIKE
-
-
 ```
+### Solution
 
 - Filter all words in the dictionary to filter words with given amount of letters
 
-If we are looking for 4 letters word Dictionary 6 will be removed
+If we are looking for 4 letters word Dictionary[6] will be removed
 ```C#
 Dictionary[0] = "DAMP";
 Dictionary[1] = "LAMP";
@@ -70,9 +70,10 @@ Dictionary[8] = "DAMD";
 ```
 
 - Create array of dictionaries where 
-  - key will be with n-1 (in our example 3) part of the words
-  - value all letters which when inserted into particular place will create a word
+  - key -  will be with n-1 (in our example 3) part of the words
+  - value - will contain letters which when inserted into particular place will create a word
 
+Example:
 Id of the dictionary informs us about the place where we should insert letter.
 Below example show us **AMP**. on the 0 index we have array of 3 letters which creates different word from our dictionary
 
@@ -88,7 +89,7 @@ On the second position of 4 letter word we have the same situation
 
 
 - build a tree
-  - take the first word take all combination of substrings DAMP (AMP,DMP,AMP) and find possible words in previously defined dictionaries
+  - take the first word which was given as argument and take all combinations of substrings DAMP (AMP,DMP,AMP) - it will be looked in  in previously defined dictionaries
 ![](Images/2022-09-30-08-04-15.png)
 
 - use DFS or BFS to find path
