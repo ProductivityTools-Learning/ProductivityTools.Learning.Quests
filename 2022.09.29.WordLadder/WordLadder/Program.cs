@@ -16,15 +16,15 @@ var wordLadder = new WordLadder(Dictionary);
 wordLadder.GetPath("DAMP", "LIKE");
 
 
-public class WordGraphNode
+public class WordTreeNode
 {
-    public WordGraphNode(string word)
+    public WordTreeNode(string word)
     {
         this.Word = word;
-        this.Nodes = new List<WordGraphNode>();
+        this.Nodes = new List<WordTreeNode>();
     }
     public string Word { get; set; }
-    public List<WordGraphNode> Nodes { get; set; }
+    public List<WordTreeNode> Nodes { get; set; }
 }
 public class WordLadder
 {
@@ -39,7 +39,7 @@ public class WordLadder
 
     private Dictionary<string, List<string>>[] WordParts;
 
-    private WordGraphNode SourceNode;
+    private WordTreeNode SourceNode;
     public WordLadder(string[] dictionary)
     {
         this.Dictionary = dictionary;
@@ -86,16 +86,16 @@ public class WordLadder
     }
 
 
-    private void LoadGraph(string startWord)
+    private void LoadTree(string startWord)
     {
-        this.SourceNode = new WordGraphNode(startWord);
+        this.SourceNode = new WordTreeNode(startWord);
         HashSet<string> visited = new HashSet<string>();
-        Queue<WordGraphNode> toProcess = new Queue<WordGraphNode>();
+        Queue<WordTreeNode> toProcess = new Queue<WordTreeNode>();
         toProcess.Enqueue(this.SourceNode);
 
         while (toProcess.Count > 0)
         {
-            WordGraphNode node = toProcess.Dequeue();
+            WordTreeNode node = toProcess.Dequeue();
             if (!visited.Contains(node.Word))
             {
                 visited.Add(node.Word);
@@ -109,7 +109,7 @@ public class WordLadder
                             var fullWord = node.Word.Substring(0, i) + x + node.Word.Substring(i + 1, node.Word.Length - 1 - i);
                             if (!visited.Contains(fullWord))
                             {
-                                var newNode = new WordGraphNode(fullWord);
+                                var newNode = new WordTreeNode(fullWord);
                                 toProcess.Enqueue(newNode);
                                 node.Nodes.Add(newNode);
                             }
@@ -120,9 +120,9 @@ public class WordLadder
         }
     }
 
-    private Stack<WordGraphNode> DFS(string endWord)
+    private Stack<WordTreeNode> DFS(string endWord)
     {
-        Stack<WordGraphNode> path = new Stack<WordGraphNode>();
+        Stack<WordTreeNode> path = new Stack<WordTreeNode>();
         var start = this.SourceNode;
         if (start.Word == endWord)
         {
@@ -134,9 +134,9 @@ public class WordLadder
         return path; 
     }
 
-    private bool DFSStep(string endWord,WordGraphNode currentNode, Stack<WordGraphNode> path)
+    private bool DFSStep(string endWord,WordTreeNode currentNode, Stack<WordTreeNode> path)
     {
-        foreach (WordGraphNode node in currentNode.Nodes)
+        foreach (WordTreeNode node in currentNode.Nodes)
         {
             path.Push(node);
             if (node.Word==endWord)
@@ -159,7 +159,7 @@ public class WordLadder
         return false;
     }
 
-    private void PrintResult(Stack<WordGraphNode> steps)
+    private void PrintResult(Stack<WordTreeNode> steps)
     {
         foreach (var item in steps)
         {
@@ -172,7 +172,7 @@ public class WordLadder
         int wordLength = startWord.Length;
         FilterDictionary(wordLength);
         LoadDictoinaryOfNLettersWord(wordLength);
-        LoadGraph(startWord);
+        LoadTree(startWord);
         var result=DFS(endWord);
         PrintResult(result);
         Console.ReadLine();

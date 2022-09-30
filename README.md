@@ -35,9 +35,9 @@ Repository is used to store different coding quests
   - Calcualte distance on the fly - optimum solution
 
 
-## Word steps
+## Word ladder
 
-[source](https://www.careercup.com/question?id=5114303424233472)
+[source](https://leetcode.com/problems/word-ladder/)
 
   ```
   Given a dictionary containing a list of words, a starting word, and an ending word, return the minimum number of steps to transform the starting word into the ending word.
@@ -48,10 +48,51 @@ Return null if it is impossible to transform the starting word into the ending w
 
 Example:
 
-Starting word: cat
-Ending word: dog
+transformWord(‘DAMP’, ‘LIKE’)
+Output: DAMP->LAMP->LIMP->LIME->LIKE
 
-cat -> cot -> cog -> dog ('cot' and 'cog' are in the dictionary)
 
-return 3
 ```
+
+- Filter all words in the dictionary to filter words with given amount of letters
+
+If we are looking for 4 letters word Dictionary 6 will be removed
+```C#
+Dictionary[0] = "DAMP";
+Dictionary[1] = "LAMP";
+Dictionary[2] = "LIMP";
+Dictionary[3] = "LIME";
+Dictionary[4] = "LIKE";
+Dictionary[5] = "LALA";
+Dictionary[6] = "WUJCZYK";
+Dictionary[7] = "RAMP";
+Dictionary[8] = "DAMD";
+```
+
+- Create array of dictionaries where 
+  - key will be with n-1 (in our example 3) part of the words
+  - value all letters which when inserted into particular place will create a word
+
+Id of the dictionary informs us about the place where we should insert letter.
+Below example show us **AMP**. on the 0 index we have array of 3 letters which creates different word from our dictionary
+
+![](Images/2022-09-30-07-53-23.png)
+
+On the 0 index we also have other words. Below example of **IMP**
+
+![](Images/2022-09-30-07-56-29.png)
+
+On the second position of 4 letter word we have the same situation
+
+![](Images/2022-09-30-07-57-53.png)
+
+
+- build a tree
+  - take the first word take all combination of substrings DAMP (AMP,DMP,AMP) and find possible words in previously defined dictionaries
+![](Images/2022-09-30-08-04-15.png)
+
+- use DFS or BFS to find path
+- print path
+
+
+  
