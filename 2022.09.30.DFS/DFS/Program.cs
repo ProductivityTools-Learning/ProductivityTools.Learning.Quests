@@ -3,8 +3,6 @@ using DFS;
 
 Console.WriteLine("Hello, World!");
 
-ObjectDFS1Worker worker = new ObjectDFS1Worker();
-worker.Do();
 
 var graph = new UndirectedGraph(7);
 graph.AddEdge(0, 1);
@@ -16,8 +14,9 @@ graph.AddEdge(2, 6);
 graph.AddEdge(6, 5);
 graph.AddEdge(4, 5);
 
-var DFS = new DFS1(graph);
-DFS.Search(5);
+var BFS = new DFS1(graph);
+DFS1.Search(5);
+
 
 class DFS1
 {
