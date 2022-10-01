@@ -1,5 +1,10 @@
 ﻿// See https://aka.ms/new-console-template for more information
+using DFS;
+
 Console.WriteLine("Hello, World!");
+
+ObjectDFS1Worker worker = new ObjectDFS1Worker();
+worker.Do();
 
 var graph = new UndirectedGraph(7);
 graph.AddEdge(0, 1);
@@ -11,15 +16,15 @@ graph.AddEdge(2, 6);
 graph.AddEdge(6, 5);
 graph.AddEdge(4, 5);
 
-var DFS = new DFS(graph);
+var DFS = new DFS1(graph);
 DFS.Search(5);
 
-class DFS
+class DFS1
 {
     UndirectedGraph Graph;
     bool[] Marked;
     int[] EdgeTo;
-    public DFS(UndirectedGraph graph)
+    public DFS1(UndirectedGraph graph)
     {
         this.Graph = graph;
         this.Marked = new bool[this.Graph.Edges.Count()];

@@ -96,4 +96,5 @@ On the second position of 4 letter word we have the same situation
 - print path
 
 
-  
+  ## DFS1
+  It shows how to do DFS with the undirected graph. Objects could have connections beteen each over A has reference to B, and B has reference to A. Connections are not weighted.
