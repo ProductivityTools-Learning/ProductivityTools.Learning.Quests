@@ -21,17 +21,13 @@ namespace DFS
             pawel.Nodes.Add(gosia);
             magda.Nodes.Add(marcin);
             magda.Nodes.Add(pawel);
-            gosia.Nodes.Add(marcin);
             gosia.Nodes.Add(pawel);
             marcin.Nodes.Add(justyna);
             marcin.Nodes.Add(magda);
-            marcin.Nodes.Add(gosia);
             justyna.Nodes.Add(marcin);
 
             var dfs = new ObjectDFS1(pawel);
-            var result = dfs.Search(pawel,"Justyna");
-            Console.WriteLine(result.Name);
-            Assert.IsNotNull(result);
+            dfs.Search(pawel,"Gosia");
 
 
             //dfs = new ObjectDFS1(justyna);
@@ -57,6 +53,7 @@ namespace DFS
     {
         Node FirstNode;
         HashSet<Node> Visited = new HashSet<Node>();
+        Stack<Node> Path = new Stack<Node>();
         public ObjectDFS1(Node firstNode)
         {
             this.FirstNode = firstNode;
@@ -65,6 +62,7 @@ namespace DFS
         public Node Search(Node node, string lookUpValue)
         {
             Visited.Add(node);
+            Path.Push(node);
             if (node.Name == lookUpValue)
             {
                 return node;
@@ -75,12 +73,15 @@ namespace DFS
                 {
                     if (Visited.Contains(childNode) == false)
                     {
-                        return Search(childNode, lookUpValue);
+                        var result=Search(childNode, lookUpValue);
+                        if (result == null)
+                        {
+                            Path.Pop();
+                        }
                     }
                 }
+                return null;
             }
-
-            throw new Exception("Value not found");
         }
     }
 }

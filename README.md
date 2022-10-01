@@ -110,10 +110,11 @@ BFS we are usually doing with the Queue and the while. We are adding all nodes o
 
 BFS
 
-- **Important** from recursion we need to do return 
+- **Important** difficult part is returning value and poping in right place
 
 ```c#
 Visited.Add(node);
+Path.Push(node);
 if (node.Name == lookUpValue)
 {
     return node;
@@ -124,8 +125,13 @@ else
     {
         if (Visited.Contains(childNode) == false)
         {
-            **return** Search(childNode, lookUpValue)
+            var result=Search(childNode, lookUpValue);
+            if (result == null)
+            {
+                Path.Pop();
+            }
         }
     }
+    return null;
 }
 ```
