@@ -29,13 +29,14 @@ namespace DFS
             justyna.Nodes.Add(marcin);
 
             var dfs = new ObjectDFS1(pawel);
-            var result=dfs.Search("Justyna");
+            var result = dfs.Search(pawel,"Justyna");
+            Console.WriteLine(result.Name);
             Assert.IsNotNull(result);
 
 
-            dfs = new ObjectDFS1(justyna);
-            result = dfs.Search("Pawel");
-            Assert.IsNotNull(result);
+            //dfs = new ObjectDFS1(justyna);
+            //result = dfs.Search("Pawel");
+            //Assert.IsNotNull(result);
 
             Console.ReadLine();
         }
@@ -51,45 +52,35 @@ namespace DFS
             this.Nodes = new List<Node>();
         }
     }
+
     public class ObjectDFS1
     {
-        public Node InitialNode { get; set; }
-        public ObjectDFS1(Node initialNode)
+        Node FirstNode;
+        HashSet<Node> Visited = new HashSet<Node>();
+        public ObjectDFS1(Node firstNode)
         {
-            this.InitialNode = initialNode;
+            this.FirstNode = firstNode;
         }
 
-        public Node Search(string name)
+        public Node Search(Node node, string lookUpValue)
         {
-            Queue<Node> queue = new Queue<Node>();
-            HashSet<Node> visited = new HashSet<Node>();
-
-            queue.Enqueue(this.InitialNode);
-
-            while(queue.Count > 0)
+            Visited.Add(node);
+            if (node.Name == lookUpValue)
             {
-                Node workingNode=queue.Dequeue();
-                Console.WriteLine(workingNode.Name);
-
-                visited.Add(workingNode);
-
-                if(workingNode.Name== name)
+                return node;
+            }
+            else
+            {
+                foreach (var childNode in node.Nodes)
                 {
-                    return workingNode;
-                }
-                else
-                {
-                    foreach (var item in workingNode.Nodes)
+                    if (Visited.Contains(childNode) == false)
                     {
-                        if (visited.Contains(item) == false)
-                        {
-                            queue.Enqueue(item);
-                        }
+                        return Search(childNode, lookUpValue);
                     }
                 }
-
             }
-            return null; 
+
+            throw new Exception("Value not found");
         }
     }
 }

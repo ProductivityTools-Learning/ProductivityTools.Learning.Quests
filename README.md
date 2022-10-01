@@ -106,3 +106,26 @@ To print the path from one node to the node which we had been looking for, we ne
 BFS we are usually doing with the Queue and the while. We are adding all nodes on given level to the queue and while queue is not empty we are processing elements
 
 ![](Images/2022-10-01-07-29-02.png)
+
+
+BFS
+
+- **Important** from recursion we need to do return 
+
+```c#
+Visited.Add(node);
+if (node.Name == lookUpValue)
+{
+    return node;
+}
+else
+{
+    foreach (var childNode in node.Nodes)
+    {
+        if (Visited.Contains(childNode) == false)
+        {
+            **return** Search(childNode, lookUpValue)
+        }
+    }
+}
+```
