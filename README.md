@@ -96,5 +96,13 @@ On the second position of 4 letter word we have the same situation
 - print path
 
 
-  ## DFS1
-  It shows how to do DFS with the undirected graph. Objects could have connections beteen each over A has reference to B, and B has reference to A. Connections are not weighted.
+## BFS
+It shows how to do BFS with the undirected graph. Objects could have connections beteen each over A has reference to B, and B has reference to A. Connections are not weighted.
+
+BFS cannot be used to find the shortest path. Dijkstra's algorithm adapts BFS to let you find single-source shortest paths.
+
+To print the path from one node to the node which we had been looking for, we need to save reference to parent.
+
+BFS we are usually doing with the Queue and the while. We are adding all nodes on given level to the queue and while queue is not empty we are processing elements
+
+![](Images/2022-10-01-07-29-02.png)

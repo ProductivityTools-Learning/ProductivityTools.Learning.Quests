@@ -59,10 +59,25 @@ namespace BFSQuest
             this.InitialNode = initialNode;
         }
 
+        private void PrintPath(Dictionary<Node, Node> parents, Node lastElement)
+        {
+            Console.WriteLine("Path");
+            var element = lastElement;
+            while (parents.ContainsKey(element))
+            {
+                Console.WriteLine(element.Name);
+                element = parents[element];
+            }
+            Console.WriteLine("---------");
+        }
+
         public Node Search(string name)
         {
             Queue<Node> queue = new Queue<Node>();
             HashSet<Node> visited = new HashSet<Node>();
+
+            //we need to have reference to parent if we would like to print the path
+            Dictionary<Node, Node> ParentPath = new Dictionary<Node, Node>();
 
             queue.Enqueue(this.InitialNode);
 
@@ -75,6 +90,7 @@ namespace BFSQuest
 
                 if (workingNode.Name == name)
                 {
+                    PrintPath(ParentPath, workingNode);
                     return workingNode;
                 }
                 else
@@ -83,6 +99,8 @@ namespace BFSQuest
                     {
                         if (visited.Contains(item) == false)
                         {
+                            visited.Add(item);
+                            ParentPath.Add(item, workingNode);
                             queue.Enqueue(item);
                         }
                     }
