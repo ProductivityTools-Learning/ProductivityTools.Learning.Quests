@@ -12,7 +12,8 @@
 
 # Quests
 
-Repository is used to store different coding quests
+Repository is used to store different coding quest.
+[Draw.io file](https://app.diagrams.net/#G1z-c3mN3V7xB3Kej71jyUp6bZdj1GPvhg)
 
 <!--more-->
 

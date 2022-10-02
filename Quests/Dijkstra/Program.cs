@@ -1,67 +1,109 @@
 ﻿// See https://aka.ms/new-console-template for more information
 Console.WriteLine("Hello, World!");
 
-var e1 = new Edge() { From = "Pawel", To = "Magda", Weigth = 1 };
-var e2 = new Edge() { From = "Pawel", To = "Gosia", Weigth = 4 };
-var e3 = new Edge() { From = "Magda", To = "Gosia", Weigth = 1 };
+var pawel = new Node() { Name = "Pawel" };
+var magda = new Node() { Name = "Magda" };
+var gosia = new Node() { Name = "Gosia" };
+
+
+var e1 = new Edge() { From = pawel, To = magda, Weigth = 1 };
+var e2 = new Edge() { From = pawel, To = gosia, Weigth = 4 };
+pawel.Edges.Add(e1);
+pawel.Edges.Add(e2);
+
+var e3 = new Edge() { From = magda, To = gosia, Weigth = 1 };
+magda.Edges.Add(e3);
 
 //position in list or in array define the nodes
-List<Edge> edges = new List<Edge>() { e1, e2, e3 };
-var dijskra = new Dijskra(edges);
-dijskra.Do(0);
+List<Node> edges = new List<Node>() { pawel, magda, gosia};
+var dijskra = new Dijskra();
+dijskra.Do(pawel);
 
+//we need to have edges and nodes
 class Edge
 {
-    public string From, To;
+    public Node From, To;
     public int Weigth;
+}
+
+class Node
+{
+    public Node()
+    {
+        this.Edges = new List<Edge>();
+    }
+    public string Name { get; set; }
+    public List<Edge> Edges { get; set; } 
+    
 }
 
 class Dijskra
 {
-    List<Edge> Edges;
-    int[] distanceTo;
-    PriorityQueue<Edge> priorityQueue = new PriorityQueue<Edge>(x => x.Weigth);
-    public Dijskra(List<Edge> edges)
+    Dictionary<Node,int> DistanceTo = new System.Collections.Generic.Dictionary<Node, int>();
+    PriorityQueue priorityQueue = new PriorityQueue();
+    public Dijskra()
     {
-        this.Edges = edges;
-        distanceTo = new int[this.Edges.Count];
+       
+    }
 
-        for (int i = 0; i < distanceTo.Length; i++)
+
+    public void Do(Node startNode)
+    {
+        this.priorityQueue.Enquene(startNode);
+        this.DistanceTo.Add(startNode, 0);
+        while(priorityQueue.Count>0)
         {
-            distanceTo[i] = int.MaxValue;
+            var nodeToWhichPathIsShortest = this.priorityQueue.Dequene();
+
+            foreach (var edge in nodeToWhichPathIsShortest.Edges)
+            {
+                Relax(edge);
+            }
         }
     }
 
-    public void Do(int startPosition)
+    private void Relax(Edge edge)
     {
-        this.priorityQueue.Enquene(this.Edges[startPosition]);
-        while(priorityQueue.Count>0)
+        if(DistanceTo.ContainsKey(edge.To)==false)
         {
+            DistanceTo[edge.To] = edge.Weigth;
+        }
+        else
+        {
+            if(DistanceTo[edge.From]+edge.Weigth < DistanceTo[edge.To])
+            {
+                DistanceTo[edge.To] = DistanceTo[edge.From] + edge.Weigth;
 
+                if(priorityQueue.Contains(edge.To)==false)
+                {
+                    priorityQueue.Enquene(edge.To);
+                }
+            }
         }
     }
 }
 
-class PriorityQueue<V>
+class PriorityQueue
 {
-    List<V> List = new List<V>();
-    Func<V, int> Selector;
+    List<Node> List = new List<Node>();
 
-    public PriorityQueue(Func<V,int> selector)
+    public PriorityQueue()
     {
-        this.Selector = selector;
     }
 
-    public V Dequene()
+    public Node Dequene()
     {
         int minValue = int.MaxValue;
-        V minElement = List[0];
-        foreach (var item in this.List)
+        Node minElement = List[0];
+        foreach (var node in this.List)
         {
-            if (this.Selector(item) < minValue)
+            foreach (var edge in node.Edges)
             {
-                minElement=item; ;
-                minValue = this.Selector(item);
+                if(edge.Weigth<minValue)
+                {
+                    minElement = edge.To;
+                    minValue = edge.Weigth;
+                }
             }
         }
 
@@ -69,9 +111,14 @@ class PriorityQueue<V>
         return minElement;
     }
 
-    public void Enquene(V element)
+    public void Enquene(Node element)
     {
         this.List.Add(element);
+    }
+
+    public bool Contains(Node element)
+    {
+        return this.List.Contains(element);
     }
 
     public int Count
