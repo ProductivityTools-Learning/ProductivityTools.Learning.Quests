@@ -109,7 +109,7 @@ BFS we are usually doing with the Queue and the while. We are adding all nodes o
 ![](Images/2022-10-01-07-29-02.png)
 
 
-BFS
+## DFS
 
 - **Important** difficult part is returning value and poping in right place
 
