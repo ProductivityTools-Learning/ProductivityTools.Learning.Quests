@@ -141,3 +141,5 @@ else
 
 - We need to have nodes and the edges. Edge needs to contain From and To Node reference
 - Weights cannot be negative
+
+![](Images/2022-10-03-21-36-27.png)
