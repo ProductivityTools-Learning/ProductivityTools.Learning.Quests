@@ -64,7 +64,12 @@ class Dijskra
 
     private void Relax(Edge edge)
     {
-        if(DistanceTo.ContainsKey(edge.To)==false)
+        if (priorityQueue.Contains(edge.To) == false)
+        {
+            priorityQueue.Enquene(edge.To);
+        }
+
+        if (DistanceTo.ContainsKey(edge.To)==false)
         {
             DistanceTo[edge.To] = edge.Weigth;
         }
@@ -75,10 +80,7 @@ class Dijskra
             {
                 DistanceTo[edge.To] = DistanceTo[edge.From] + edge.Weigth;
 
-                if(priorityQueue.Contains(edge.To)==false)
-                {
-                    priorityQueue.Enquene(edge.To);
-                }
+
             }
         }
     }
