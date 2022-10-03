@@ -136,3 +136,8 @@ else
     return null;
 }
 ```
+
+## Dijkstra
+
+- We need to have nodes and the edges. Edge needs to contain From and To Node reference
+- Weights cannot be negative

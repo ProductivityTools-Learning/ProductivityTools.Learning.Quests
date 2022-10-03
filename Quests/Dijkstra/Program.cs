@@ -5,17 +5,26 @@ var pawel = new Node() { Name = "Pawel" };
 var magda = new Node() { Name = "Magda" };
 var gosia = new Node() { Name = "Gosia" };
 
+var marcin = new Node() { Name = "Marcin" };
+var kuba = new Node() { Name = "Kuba" };
 
 var e1 = new Edge() { From = pawel, To = magda, Weigth = 1 };
 var e2 = new Edge() { From = pawel, To = gosia, Weigth = 4 };
 pawel.Edges.Add(e1);
 pawel.Edges.Add(e2);
 
-var e3 = new Edge() { From = magda, To = gosia, Weigth = 1 };
+var e3 = new Edge() { From = magda, To = gosia, Weigth = 2 };
 magda.Edges.Add(e3);
 
+var e4 = new Edge() { From = gosia, To = kuba, Weigth = 2 };
+gosia.Edges.Add(e4);
+var e5 = new Edge() { From = gosia, To = marcin, Weigth = 5 };
+gosia.Edges.Add(e5);
+var e6 = new Edge() { From = kuba, To = marcin, Weigth = 2 };
+kuba.Edges.Add(e6);
+
 //position in list or in array define the nodes
-List<Node> edges = new List<Node>() { pawel, magda, gosia};
+List<Node> edges = new List<Node>() { pawel, magda, gosia, kuba, marcin};
 var dijskra = new Dijskra();
 dijskra.Do(pawel);
 
@@ -46,6 +55,14 @@ class Dijskra
        
     }
 
+    private void Print()
+    {
+        foreach (var item in this.DistanceTo)
+        {
+            Console.WriteLine(string.Format($"{item.Key.Name} - {item.Value}"));
+        }
+        Console.ReadLine();
+    }
 
     public void Do(Node startNode)
     {
@@ -60,6 +77,7 @@ class Dijskra
                 Relax(edge);
             }
         }
+        Print();
     }
 
     private void Relax(Edge edge)
@@ -71,7 +89,7 @@ class Dijskra
 
         if (DistanceTo.ContainsKey(edge.To)==false)
         {
-            DistanceTo[edge.To] = edge.Weigth;
+            DistanceTo[edge.To] = edge.Weigth+ DistanceTo[edge.From];
         }
         else
         {
@@ -79,8 +97,6 @@ class Dijskra
             if (DistanceTo[edge.From]+edge.Weigth < DistanceTo[edge.To])
             {
                 DistanceTo[edge.To] = DistanceTo[edge.From] + edge.Weigth;
-
-
             }
         }
     }
