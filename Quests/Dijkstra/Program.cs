@@ -70,7 +70,8 @@ class Dijskra
         }
         else
         {
-            if(DistanceTo[edge.From]+edge.Weigth < DistanceTo[edge.To])
+            this.priorityQueue.Enquene(edge.To);
+            if (DistanceTo[edge.From]+edge.Weigth < DistanceTo[edge.To])
             {
                 DistanceTo[edge.To] = DistanceTo[edge.From] + edge.Weigth;
 
@@ -95,13 +96,14 @@ class PriorityQueue
     {
         int minValue = int.MaxValue;
         Node minElement = List[0];
+
         foreach (var node in this.List)
         {
             foreach (var edge in node.Edges)
             {
                 if(edge.Weigth<minValue)
                 {
-                    minElement = edge.To;
+                    minElement = node;
                     minValue = edge.Weigth;
                 }
             }
