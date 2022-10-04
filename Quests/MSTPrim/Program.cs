@@ -25,17 +25,26 @@ kuba.Edges.Add(e6);
 //position in list or in array define the nodes
 List<Node> edges = new List<Node>() { pawel, magda, gosia, kuba, marcin };
 
+new Prim().Do(pawel);
+
 class Prim
 {
     PriorityQueue PirorityQuene = new PriorityQueue();
     private HashSet<Node> NodesVisited = new HashSet<Node>();
+    List<Edge> MST = new List<Edge>();
     public void Do(Node startNode)
     {
         Visit(startNode);
 
-        while(this.PirorityQuene.Count > 0)
+        while (this.PirorityQuene.Count > 0)
         {
-
+            Edge edge = this.PirorityQuene.Dequene();
+            if (this.NodesVisited.Contains(edge.From) == false || this.NodesVisited.Contains(edge.To)==false)
+            {
+                this.MST.Add(edge);
+                if (this.NodesVisited.Contains(edge.From) == false) { Visit(edge.From); }
+                if (this.NodesVisited.Contains(edge.To) == false) { Visit(edge.To); }
+            }
         }
 
     }
@@ -45,7 +54,7 @@ class Prim
         this.NodesVisited.Add(node);
         foreach (var edge in node.Edges)
         {
-            if (NodesVisited.Contains(edge.To)==false)
+            if (NodesVisited.Contains(edge.To) == false)
             {
                 this.PirorityQuene.Enquene(edge);
             }
