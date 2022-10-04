@@ -31,14 +31,14 @@ namespace Dijkstra
         {
             if (DistenceTo.ContainsKey(edge.To)==false)
             {
-                DistenceTo.Add(edge.To, edge.Weigth);//HERE Is mistake
+                DistenceTo.Add(edge.To, edge.Weight);//HERE Is mistake
                 this.PriorityQuene.Enquene(edge.To);
             }
             else
             {
-                if (DistenceTo[edge.From] + edge.Weigth < DistenceTo[edge.To])
+                if (DistenceTo[edge.From] + edge.Weight < DistenceTo[edge.To])
                 {
-                    DistenceTo[edge.To] = DistenceTo[edge.From] + edge.Weigth;
+                    DistenceTo[edge.To] = DistenceTo[edge.From] + edge.Weight;
                 }
             }
         }

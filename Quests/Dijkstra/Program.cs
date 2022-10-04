@@ -8,19 +8,19 @@ var gosia = new Node() { Name = "Gosia" };
 var marcin = new Node() { Name = "Marcin" };
 var kuba = new Node() { Name = "Kuba" };
 
-var e1 = new Edge() { From = pawel, To = magda, Weigth = 1 };
-var e2 = new Edge() { From = pawel, To = gosia, Weigth = 4 };
+var e1 = new Edge() { From = pawel, To = magda, Weight = 1 };
+var e2 = new Edge() { From = pawel, To = gosia, Weight = 4 };
 pawel.Edges.Add(e1);
 pawel.Edges.Add(e2);
 
-var e3 = new Edge() { From = magda, To = gosia, Weigth = 2 };
+var e3 = new Edge() { From = magda, To = gosia, Weight = 2 };
 magda.Edges.Add(e3);
 
-var e4 = new Edge() { From = gosia, To = kuba, Weigth = 2 };
+var e4 = new Edge() { From = gosia, To = kuba, Weight = 2 };
 gosia.Edges.Add(e4);
-var e5 = new Edge() { From = gosia, To = marcin, Weigth = 5 };
+var e5 = new Edge() { From = gosia, To = marcin, Weight = 5 };
 gosia.Edges.Add(e5);
-var e6 = new Edge() { From = kuba, To = marcin, Weigth = 2 };
+var e6 = new Edge() { From = kuba, To = marcin, Weight = 2 };
 kuba.Edges.Add(e6);
 
 //position in list or in array define the nodes
@@ -32,7 +32,7 @@ dijskra.Do(pawel);
 class Edge
 {
     public Node From, To;
-    public int Weigth;
+    public int Weight;
 }
 
 class Node
@@ -89,14 +89,14 @@ class Dijskra
 
         if (DistanceTo.ContainsKey(edge.To)==false)
         {
-            DistanceTo[edge.To] = edge.Weigth+ DistanceTo[edge.From];
+            DistanceTo[edge.To] = edge.Weight+ DistanceTo[edge.From];
         }
         else
         {
             this.priorityQueue.Enquene(edge.To);
-            if (DistanceTo[edge.From]+edge.Weigth < DistanceTo[edge.To])
+            if (DistanceTo[edge.From]+edge.Weight < DistanceTo[edge.To])
             {
-                DistanceTo[edge.To] = DistanceTo[edge.From] + edge.Weigth;
+                DistanceTo[edge.To] = DistanceTo[edge.From] + edge.Weight;
             }
         }
     }
@@ -119,10 +119,10 @@ class PriorityQueue
         {
             foreach (var edge in node.Edges)
             {
-                if(edge.Weigth<minValue)
+                if(edge.Weight<minValue)
                 {
                     minElement = node;
-                    minValue = edge.Weigth;
+                    minValue = edge.Weight;
                 }
             }
         }
