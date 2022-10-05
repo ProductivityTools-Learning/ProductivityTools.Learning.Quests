@@ -16,8 +16,8 @@ namespace Dijkstra
 
         public void Do(Node startNode)
         {
+            this.DistanceTo.Add(startNode, 0);
             Visit(startNode);
-
             while (this.EdgePriorityQuene.Count > 0)
             {
                 Edge edge = this.EdgePriorityQuene.Dequene();
@@ -29,7 +29,7 @@ namespace Dijkstra
         public void Visit(Node node)
         {
             this.NodesVisited.Add(node);
-            this.DistanceTo.Add(startNode, 0);
+            
             foreach (var edge in node.Edges)
             {
                 if (NodesVisited.Contains(edge.To) == false)
@@ -58,7 +58,6 @@ namespace Dijkstra
             {
                 Console.WriteLine(string.Format($"{item.Key.Name} - {item.Value}"));
             }
-            Console.ReadLine();
         }
     }
 }
