@@ -30,20 +30,20 @@ Console.ReadLine();
 
 class Prim
 {
-    PriorityQueue PirorityQuene = new PriorityQueue();
+    PriorityQueue EdgePriorityQuene = new PriorityQueue();
     private HashSet<Node> NodesVisited = new HashSet<Node>();
     List<Edge> MST = new List<Edge>();
     public void Do(Node startNode)
     {
         Visit(startNode);
 
-        while (this.PirorityQuene.Count > 0)
+        while (this.EdgePriorityQuene.Count > 0)
         {
-            Edge edge = this.PirorityQuene.Dequene();
+            Edge edge = this.EdgePriorityQuene.Dequene();
             if (this.NodesVisited.Contains(edge.To) == false)
             {
                 this.MST.Add(edge);
-                if (this.NodesVisited.Contains(edge.To) == false) { Visit(edge.To); }
+                Visit(edge.To); 
             }
         }
         Print();
@@ -56,7 +56,7 @@ class Prim
         {
             if (NodesVisited.Contains(edge.To) == false)
             {
-                this.PirorityQuene.Enquene(edge);
+                this.EdgePriorityQuene.Enquene(edge);
             }
         }
     }

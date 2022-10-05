@@ -155,3 +155,11 @@ In the computation aspect, Prim’s and Dijkstra’s algorithms have three main 
 - Dijkstra’s algorithm finds the shortest path, but Prim’s algorithm finds the MST
 - Dijkstra’s algorithm can work on both directed and undirected graphs, but Prim’s algorithm only works on undirected graphs
 - Prim’s algorithm can handle negative edge weights, but Dijkstra’s algorithm may fail to accurately compute distances if at least one negative edge weight exists
+
+In practice, Dijkstra’s algorithm is used when we want to save time and fuel traveling from one point to another. Prim’s algorithm, on the other hand, is used when we want to minimize material costs in constructing roads that connect multiple points to each other.
+
+|Dijkstra|Prim|   |   |   |
+|---|---|---|---|---|
+|   |EdgePriorityQuene|   |   |   |
+|   |NodesVistedHashset|   |   |   |
+|   |EdgeMST|   |   |   |
