@@ -1,4 +1,6 @@
 ﻿// See https://aka.ms/new-console-template for more information
+using Dijkstra;
+
 Console.WriteLine("Hello, World!");
 
 var pawel = new Node() { Name = "Pawel" };
@@ -25,23 +27,24 @@ kuba.Edges.Add(e6);
 
 //position in list or in array define the nodes
 List<Node> edges = new List<Node>() { pawel, magda, gosia, kuba, marcin };
-var dijskra = new Dijskra();
-dijskra.Do(pawel);
+new Dijskra().Do(pawel);
+new DijkstraLikePrim().Do(pawel);
+Console.ReadLine();
 
 //we need to have edges and nodes
 
 class Dijskra
 {
     Dictionary<Node, int> DistanceTo = new System.Collections.Generic.Dictionary<Node, int>();
-    PriorityQueue priorityQueue = new PriorityQueue();
+    PriorityQueue nodePriorityQueue = new PriorityQueue();
 
     public void Do(Node startNode)
     {
-        this.priorityQueue.Enquene(startNode);
+        this.nodePriorityQueue.Enquene(startNode);
         this.DistanceTo.Add(startNode, 0);
-        while (priorityQueue.Count > 0)
+        while (nodePriorityQueue.Count > 0)
         {
-            var nodeToWhichPathIsShortest = this.priorityQueue.Dequene();
+            var nodeToWhichPathIsShortest = this.nodePriorityQueue.Dequene();
 
             foreach (var edge in nodeToWhichPathIsShortest.Edges)
             {
@@ -53,9 +56,9 @@ class Dijskra
 
     private void Relax(Edge edge)
     {
-        if (priorityQueue.Contains(edge.To) == false)
+        if (nodePriorityQueue.Contains(edge.To) == false)
         {
-            priorityQueue.Enquene(edge.To);
+            nodePriorityQueue.Enquene(edge.To);
         }
 
         if (DistanceTo.ContainsKey(edge.To) == false)
@@ -64,7 +67,7 @@ class Dijskra
         }
         else
         {
-            this.priorityQueue.Enquene(edge.To);
+            this.nodePriorityQueue.Enquene(edge.To);
             if (DistanceTo[edge.From] + edge.Weight < DistanceTo[edge.To])
             {
                 DistanceTo[edge.To] = DistanceTo[edge.From] + edge.Weight;
@@ -73,6 +76,7 @@ class Dijskra
     }
     private void Print()
     {
+        Console.WriteLine("Dijkstra");
         foreach (var item in this.DistanceTo)
         {
             Console.WriteLine(string.Format($"{item.Key.Name} - {item.Value}"));
@@ -81,67 +85,6 @@ class Dijskra
     }
 }
 
-class PriorityQueue
-{
-    List<Node> List = new List<Node>();
 
-    public PriorityQueue()
-    {
-    }
 
-    public Node Dequene()
-    {
-        int minValue = int.MaxValue;
-        Node minElement = List[0];
 
-        foreach (var node in this.List)
-        {
-            foreach (var edge in node.Edges)
-            {
-                if (edge.Weight < minValue)
-                {
-                    minElement = node;
-                    minValue = edge.Weight;
-                }
-            }
-        }
-
-        this.List.Remove(minElement);
-        return minElement;
-    }
-
-    public void Enquene(Node element)
-    {
-        this.List.Add(element);
-    }
-
-    public bool Contains(Node element)
-    {
-        return this.List.Contains(element);
-    }
-
-    public int Count
-    {
-        get
-        {
-            return this.List.Count();
-        }
-    }
-
-}
-class Edge
-{
-    public Node From, To;
-    public int Weight;
-}
-
-class Node
-{
-    public Node()
-    {
-        this.Edges = new List<Edge>();
-    }
-    public string Name { get; set; }
-    public List<Edge> Edges { get; set; }
-
-}
