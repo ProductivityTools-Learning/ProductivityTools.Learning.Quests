@@ -143,3 +143,15 @@ else
 - Weights cannot be negative
 
 ![](Images/2022-10-03-21-36-27.png)
+
+## MST Prim
+
+- Do it also with the array instead of names
+- Performed for the same graph as Djkstra
+
+### Comparing Prim’s and Dijkstra’s Algorithms
+In the computation aspect, Prim’s and Dijkstra’s algorithms have three main differences:
+
+- Dijkstra’s algorithm finds the shortest path, but Prim’s algorithm finds the MST
+- Dijkstra’s algorithm can work on both directed and undirected graphs, but Prim’s algorithm only works on undirected graphs
+- Prim’s algorithm can handle negative edge weights, but Dijkstra’s algorithm may fail to accurately compute distances if at least one negative edge weight exists

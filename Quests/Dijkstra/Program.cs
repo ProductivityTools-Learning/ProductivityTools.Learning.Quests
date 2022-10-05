@@ -24,51 +24,22 @@ var e6 = new Edge() { From = kuba, To = marcin, Weight = 2 };
 kuba.Edges.Add(e6);
 
 //position in list or in array define the nodes
-List<Node> edges = new List<Node>() { pawel, magda, gosia, kuba, marcin};
+List<Node> edges = new List<Node>() { pawel, magda, gosia, kuba, marcin };
 var dijskra = new Dijskra();
 dijskra.Do(pawel);
 
 //we need to have edges and nodes
-class Edge
-{
-    public Node From, To;
-    public int Weight;
-}
-
-class Node
-{
-    public Node()
-    {
-        this.Edges = new List<Edge>();
-    }
-    public string Name { get; set; }
-    public List<Edge> Edges { get; set; } 
-    
-}
 
 class Dijskra
 {
-    Dictionary<Node,int> DistanceTo = new System.Collections.Generic.Dictionary<Node, int>();
+    Dictionary<Node, int> DistanceTo = new System.Collections.Generic.Dictionary<Node, int>();
     PriorityQueue priorityQueue = new PriorityQueue();
-    public Dijskra()
-    {
-       
-    }
-
-    private void Print()
-    {
-        foreach (var item in this.DistanceTo)
-        {
-            Console.WriteLine(string.Format($"{item.Key.Name} - {item.Value}"));
-        }
-        Console.ReadLine();
-    }
 
     public void Do(Node startNode)
     {
         this.priorityQueue.Enquene(startNode);
         this.DistanceTo.Add(startNode, 0);
-        while(priorityQueue.Count>0)
+        while (priorityQueue.Count > 0)
         {
             var nodeToWhichPathIsShortest = this.priorityQueue.Dequene();
 
@@ -87,18 +58,26 @@ class Dijskra
             priorityQueue.Enquene(edge.To);
         }
 
-        if (DistanceTo.ContainsKey(edge.To)==false)
+        if (DistanceTo.ContainsKey(edge.To) == false)
         {
-            DistanceTo[edge.To] = edge.Weight+ DistanceTo[edge.From];
+            DistanceTo[edge.To] = edge.Weight + DistanceTo[edge.From];
         }
         else
         {
             this.priorityQueue.Enquene(edge.To);
-            if (DistanceTo[edge.From]+edge.Weight < DistanceTo[edge.To])
+            if (DistanceTo[edge.From] + edge.Weight < DistanceTo[edge.To])
             {
                 DistanceTo[edge.To] = DistanceTo[edge.From] + edge.Weight;
             }
         }
+    }
+    private void Print()
+    {
+        foreach (var item in this.DistanceTo)
+        {
+            Console.WriteLine(string.Format($"{item.Key.Name} - {item.Value}"));
+        }
+        Console.ReadLine();
     }
 }
 
@@ -119,7 +98,7 @@ class PriorityQueue
         {
             foreach (var edge in node.Edges)
             {
-                if(edge.Weight<minValue)
+                if (edge.Weight < minValue)
                 {
                     minElement = node;
                     minValue = edge.Weight;
@@ -148,4 +127,21 @@ class PriorityQueue
             return this.List.Count();
         }
     }
+
+}
+class Edge
+{
+    public Node From, To;
+    public int Weight;
+}
+
+class Node
+{
+    public Node()
+    {
+        this.Edges = new List<Edge>();
+    }
+    public string Name { get; set; }
+    public List<Edge> Edges { get; set; }
+
 }

@@ -26,6 +26,7 @@ kuba.Edges.Add(e6);
 List<Node> edges = new List<Node>() { pawel, magda, gosia, kuba, marcin };
 
 new Prim().Do(pawel);
+Console.ReadLine();
 
 class Prim
 {
@@ -39,14 +40,13 @@ class Prim
         while (this.PirorityQuene.Count > 0)
         {
             Edge edge = this.PirorityQuene.Dequene();
-            if (this.NodesVisited.Contains(edge.From) == false || this.NodesVisited.Contains(edge.To)==false)
+            if (this.NodesVisited.Contains(edge.To) == false)
             {
                 this.MST.Add(edge);
-                if (this.NodesVisited.Contains(edge.From) == false) { Visit(edge.From); }
                 if (this.NodesVisited.Contains(edge.To) == false) { Visit(edge.To); }
             }
         }
-
+        Print();
     }
 
     public void Visit(Node node)
@@ -60,9 +60,15 @@ class Prim
             }
         }
     }
+    private void Print()
+    {
+        Console.WriteLine("Prim2");
+        foreach (var item in MST)
+        {
+            Console.WriteLine($"{item.From.Name} - {item.To.Name}");
+        }
+    }
 }
-
-
 
 public class Edge
 {
@@ -87,7 +93,6 @@ public class PriorityQueue
             return this.Edges.Count;
         }
     }
-
     public void Enquene(Edge edge)
     {
         this.Edges.Add(edge);
