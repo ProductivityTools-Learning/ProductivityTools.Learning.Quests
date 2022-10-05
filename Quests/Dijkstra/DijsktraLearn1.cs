@@ -9,7 +9,7 @@ namespace Dijkstra
     internal class DijsktraLearn1
     {
 
-        private PriorityQueue PriorityQuene=new PriorityQueue();
+        private NodePriorityQueue PriorityQuene=new NodePriorityQueue();
         private Dictionary<Node, int> DistenceTo = new Dictionary<Node, int>();
 
         public void Do(Node startNode)

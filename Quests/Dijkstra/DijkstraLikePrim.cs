@@ -11,7 +11,6 @@ namespace Dijkstra
     {
         EdgePriorityQueue EdgePriorityQuene = new EdgePriorityQueue();
         private HashSet<Node> NodesVisited = new HashSet<Node>();
-        List<Edge> MST = new List<Edge>();
         Dictionary<Node, int> DistanceTo = new System.Collections.Generic.Dictionary<Node, int>();
 
         public void Do(Node startNode)
@@ -29,7 +28,6 @@ namespace Dijkstra
         public void Visit(Node node)
         {
             this.NodesVisited.Add(node);
-            
             foreach (var edge in node.Edges)
             {
                 if (NodesVisited.Contains(edge.To) == false)

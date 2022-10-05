@@ -30,7 +30,7 @@ Console.ReadLine();
 
 class Prim
 {
-    PriorityQueue EdgePriorityQuene = new PriorityQueue();
+    EdgePriorityQueue EdgePriorityQuene = new EdgePriorityQueue();
     private HashSet<Node> NodesVisited = new HashSet<Node>();
     List<Edge> MST = new List<Edge>();
     public void Do(Node startNode)
@@ -82,7 +82,7 @@ public class Node
     public List<Edge> Edges = new List<Edge>();
 }
 
-public class PriorityQueue
+public class EdgePriorityQueue
 {
     List<Edge> Edges = new List<Edge>();
 

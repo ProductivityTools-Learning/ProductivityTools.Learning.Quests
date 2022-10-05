@@ -9,7 +9,7 @@ namespace Dijkstra
     internal class DijkstraBasic
     {
         Dictionary<Node, int> DistanceTo = new System.Collections.Generic.Dictionary<Node, int>();
-        PriorityQueue nodePriorityQueue = new PriorityQueue();
+        NodePriorityQueue nodePriorityQueue = new NodePriorityQueue();
 
         public void Do(Node startNode)
         {

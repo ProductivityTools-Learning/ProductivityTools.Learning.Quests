@@ -6,11 +6,11 @@ using System.Threading.Tasks;
 
 namespace Dijkstra
 {
-    class PriorityQueue
+    class NodePriorityQueue
     {
         List<Node> List = new List<Node>();
 
-        public PriorityQueue()
+        public NodePriorityQueue()
         {
         }
 

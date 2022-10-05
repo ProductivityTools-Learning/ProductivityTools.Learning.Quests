@@ -8,7 +8,7 @@ namespace MSTPrim
 {
     internal class PrimLearn1
     {
-        PriorityQueue edgePriorityQuene=new PriorityQueue();
+        EdgePriorityQueue edgePriorityQuene=new EdgePriorityQueue();
         HashSet<Node> NodesVisited=new HashSet<Node>();
         HashSet<Edge> MST = new HashSet<Edge>();
         public void Do(Node initialNode)
