@@ -1,6 +1,7 @@
 ﻿// See https://aka.ms/new-console-template for more information
 using Dijkstra;
 
+
 Console.WriteLine("Hello, World!");
 
 var pawel = new Node() { Name = "Pawel" };
@@ -30,6 +31,8 @@ List<Node> edges = new List<Node>() { pawel, magda, gosia, kuba, marcin };
 new DijkstraBasic().Do(pawel);
 new DijkstraLikePrim().Do(pawel);
 Console.ReadLine();
+
+
 
 //we need to have edges and nodes
 

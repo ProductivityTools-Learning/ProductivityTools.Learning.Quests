@@ -30,7 +30,11 @@ namespace Dijkstra
             this.NodesVisited.Add(node);
             foreach (var edge in node.Edges)
             {
-                this.EdgePriorityQuene.Enquene(edge);
+                if (NodesVisited.Contains(edge.To) == false)
+                {
+                    this.EdgePriorityQuene.Enquene(edge);
+                }
+
                 if (DistanceTo.ContainsKey(edge.To) == false || DistanceTo[edge.From] + edge.Weight < DistanceTo[edge.To])
                 {
                     DistanceTo[edge.To] = DistanceTo[edge.From] + edge.Weight;
