@@ -36,7 +36,6 @@ class Prim
     public void Do(Node startNode)
     {
         Visit(startNode);
-
         while (this.EdgePriorityQuene.Count > 0)
         {
             Edge edge = this.EdgePriorityQuene.Dequene();

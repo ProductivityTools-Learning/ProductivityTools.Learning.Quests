@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Dijkstra
 {
-    internal class DijsktraLearn1
+    internal class DijkstraLearn1
     {
 
         private NodePriorityQueue PriorityQuene=new NodePriorityQueue();
