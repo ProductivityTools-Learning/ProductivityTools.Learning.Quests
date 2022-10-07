@@ -17,7 +17,12 @@ namespace MSTKruskal
 
         private T GetParent(T node)
         {
-            while (this.array[node].Equals(node))
+            if (this.array.ContainsKey(node) == false)
+            {
+                this.array.Add(node, node);
+                return node;
+            }
+            while (this.array[node].Equals(node)==false)
             {
                 return GetParent(this.array[node]);
             }
