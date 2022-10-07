@@ -1,4 +1,6 @@
-﻿Console.WriteLine("Hello, World!");
+﻿using MSTPrim.Learning;
+
+Console.WriteLine("Hello, World!");
 
 var pawel = new Node() { Name = "Pawel" };
 var magda = new Node() { Name = "Magda" };
@@ -26,6 +28,7 @@ kuba.Edges.Add(e6);
 List<Node> edges = new List<Node>() { pawel, magda, gosia, kuba, marcin };
 
 new Prim().Do(pawel);
+new PrimLearn3().FindMST(pawel);
 Console.ReadLine();
 
 class Prim
