@@ -18,7 +18,7 @@ namespace MSTKruskal
             }
         }
 
-        public void Add(Edge edge)
+        public void Enquene(Edge edge)
         {
             this.Edges.Add(edge);
         }
