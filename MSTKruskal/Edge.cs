@@ -9,5 +9,6 @@ namespace MSTKruskal
     internal class Edge
     {
         public Node From, To;
+        public int Weight;
     }
 }

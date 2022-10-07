@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace MSTKruskal
 {
-    internal class Node
+    internal struct Node
     {
+        public string Name { get; set; }
     }
 }

@@ -30,5 +30,10 @@ namespace MSTKruskal
             var node2Parent=GetParent(node2);
             return node1Parent.Equals(node2Parent);
         }
+
+        public void Connect(T node1, T node2)
+        {
+            this.array[node1] = this.array[node2];
+        }
     }
 }
