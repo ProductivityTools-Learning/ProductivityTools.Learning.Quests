@@ -1,4 +1,5 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using BFS;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -41,16 +42,7 @@ namespace BFSQuest
         }
     }
 
-    public class Node
-    {
-        public string Name { get; set; }
-        public List<Node> Nodes { get; set; }
-
-        public Node()
-        {
-            this.Nodes = new List<Node>();
-        }
-    }
+   
     public class ObjectBFS1
     {
         public Node InitialNode { get; set; }

@@ -1,4 +1,5 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using DFS.Learning;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -29,6 +30,9 @@ namespace DFS
             var dfs = new ObjectDFS1(pawel);
             dfs.Search(pawel,"Gosia");
 
+            var dfs2 = new DFSLearn2();
+            var x=dfs2.FindPath(pawel, "Justyna");
+
 
             //dfs = new ObjectDFS1(justyna);
             //result = dfs.Search("Pawel");
@@ -38,16 +42,7 @@ namespace DFS
         }
     }
 
-    public class Node
-    {
-        public string Name { get; set; }
-        public List<Node> Nodes { get; set; }
 
-        public Node()
-        {
-            this.Nodes = new List<Node>();
-        }
-    }
 
     public class ObjectDFS1
     {

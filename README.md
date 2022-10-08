@@ -137,6 +137,12 @@ else
 }
 ```
 
+### BFS vs DFS
+|BFS|DFS|
+|---|---|
+|Node contains node|Node contains node|
+|NodeQueue|Recursion|
+
 ## Dijkstra
 
 - We need to have nodes and the edges. Edge needs to contain From and To Node reference
@@ -158,8 +164,8 @@ In the computation aspect, Prim’s and Dijkstra’s algorithms have three main 
 
 In practice, Dijkstra’s algorithm is used when we want to save time and fuel traveling from one point to another. Prim’s algorithm, on the other hand, is used when we want to minimize material costs in constructing roads that connect multiple points to each other.
 
-|Dijkstra|Prim|   |   |   |
+|Dijkstra|Prim|Kruskal|   |   |
 |---|---|---|---|---|
-|   |EdgePriorityQuene|   |   |   |
-|   |NodesVistedHashset|   |   |   |
-|   |EdgeMST|   |   |   |
+|EdgePriorityQueue|EdgePriorityQuene|EdgePriorityQuene|   |   |
+|NodesVisitedHashset|NodesVistedHashset|QuickUnion<Node>|   |   |
+|DistanceToDictionary|EdgeMSTList|MST|   |   |

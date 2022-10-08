@@ -9,7 +9,7 @@ namespace MSTKruskal.Learning
     internal class KruskalLearn1
     {
         QuickUnion<Node> QuickUnion = new QuickUnion<Node>();
-        PriorityQuene PriorityQuene = new PriorityQuene();
+        EdgePriorityQuene PriorityQuene = new EdgePriorityQuene();
         List<Edge> MST=new List<Edge>();
         public void FindMST(List<Edge> edges)
         {

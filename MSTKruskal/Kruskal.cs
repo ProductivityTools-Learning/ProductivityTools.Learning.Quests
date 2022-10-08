@@ -8,7 +8,7 @@ namespace MSTKruskal
 {
     internal class Kruskal
     {
-        PriorityQuene priorityQueue = new PriorityQuene();
+        EdgePriorityQuene priorityQueue = new EdgePriorityQuene();
         QuickUnion<Node> QuickUnion = new QuickUnion<Node>();
         List<Edge> MST = new List<Edge>();
         public void CalculateMST(List<Edge> edges)

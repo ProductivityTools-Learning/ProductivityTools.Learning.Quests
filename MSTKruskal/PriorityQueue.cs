@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace MSTKruskal
 {
-    class PriorityQuene
+    class EdgePriorityQuene
     {
         List<Edge> Edges = new List<Edge>();
 
