@@ -32,8 +32,6 @@ namespace MSTPrim.Learning
             foreach (var edge in node.Edges)
             {
                 this.EdgePriorityQuene.Enquene(edge);
-
-                if(edge.To)
             }
         }
     }
