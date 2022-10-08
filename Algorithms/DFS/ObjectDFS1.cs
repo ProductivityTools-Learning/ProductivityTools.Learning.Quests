@@ -69,12 +69,13 @@ namespace DFS
                     if (Visited.Contains(childNode) == false)
                     {
                         var result=Search(childNode, lookUpValue);
-                        if (result == null)
-                        {
-                            Path.Pop();
-                        }
+                        //if (result == null)
+                        //{
+                        //    Path.Pop();
+                        //}
                     }
                 }
+                Path.Pop();
                 return null;
             }
         }
