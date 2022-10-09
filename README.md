@@ -37,7 +37,14 @@ Repository is used to store different coding quest.
 - while loop, with two pointers
 - for loop with one going from start and second string.lenght-1-firstIterator
 
-#### Given two strings write a method to decide if one is a permutation of the other
+ <img src="./Images/Icons/no.png" alt="drawing" width="12"/> **Given two strings write a method to decide if one is a permutation of the other**
+ - what is permutation? = all words creatd from given set of letters is permutation
+ - check the lenght
+ - sort and compare the elements
+ - check if in the second word we have all leters as in the first one
+ - check if strings have the same character count <img src="./Images/Icons/repeat.png" alt="drawing" width="12"/>
+ - if this case sensitive <img src="./Images/Icons/repeat.png" alt="drawing" width="12"/>
+ - if we trim the sapces <img src="./Images/Icons/repeat.png" alt="drawing" width="12"/>
 
 #### Wrhite a method to replace all spaces in string with '%20' you may assume that the string has sufficient space at the end of the string. Please do it in place
 
