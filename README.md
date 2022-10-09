@@ -22,7 +22,7 @@ Repository is used to store different coding quest.
 
 ### Array and strings(83,181)
 
-<img src="./Images/Icons/yes.png" alt="drawing" width="12"/> **Implement an algorithm to detrime if a string has all unique characters. What if you cannot use additional data structures** 
+<img src="./Images/Icons/yes.png" width="12"/> **Implement an algorithm to detrime if a string has all unique characters. What if you cannot use additional data structures** 
 
 - If string lenght is more than letters in alphabet => false
 - If we can use additional structure then iteration and hashset with seen letters - Time complexity: O(n) iteration+ n*O(1) Hashset=O(2n)
@@ -30,31 +30,78 @@ Repository is used to store different coding quest.
 - We can also sort the array and check if we have two letters the same next to each other O(n log(n))
 
 
-<img src="./Images/Icons/yes.png" alt="drawing" width="12"/> **Implement a function which reverses a null terminated string**
+<img src="./Images/Icons/yes.png" width="12"/> **Implement a function which reverses a null terminated string**
 
 - cat => tac
 - Create an additional array and rewrite string
 - while loop, with two pointers
 - for loop with one going from start and second string.lenght-1-firstIterator
 
- <img src="./Images/Icons/no.png" alt="drawing" width="12"/> **Given two strings write a method to decide if one is a permutation of the other**
+ <img src="./Images/Icons/no.png" width="12"/> **Given two strings write a method to decide if one is a permutation of the other**
  - what is permutation? = all words creatd from given set of letters is permutation
  - check the lenght
  - sort and compare the elements
  - check if in the second word we have all leters as in the first one
- - check if strings have the same character count <img src="./Images/Icons/repeat.png" alt="drawing" width="12"/>
- - if this case sensitive <img src="./Images/Icons/repeat.png" alt="drawing" width="12"/>
- - if we trim the sapces <img src="./Images/Icons/repeat.png" alt="drawing" width="12"/>
+ - check if strings have the same character count <img src="./Images/Icons/repeat.png" width="12"/>
+ - if this case sensitive <img src="./Images/Icons/repeat.png" width="12"/>
+ - if we trim the sapces <img src="./Images/Icons/repeat.png" width="12"/>
 
-#### Wrhite a method to replace all spaces in string with '%20' you may assume that the string has sufficient space at the end of the string. Please do it in place
+<img src="./Images/Icons/yes.png" width="12"/>  **Write a method to replace all spaces in string with '%20' you may assume that the string has sufficient space at the end of the string. Please do it in place**
 
-#### Implement a method to perform basic string compression using the counts of repated characters. aabcccccaa would become a2b1c5a3. If the 'compressed string would not become smaller than the original string your method should return the original string
+- If we won't do it in place it is simple we create the second array and copy 
+- Other way we need to start from the end
 
-#### Given an image represented by NxN matrix write where each pixel in the image is 4 butes write a method to rotate the image by 90 degress. Can you do this in place?
+<img src="./Images/Icons/no.png" width="12"/> **Implement a method to perform basic string compression using the counts of repated characters. aabcccccaa would become a2b1c5a3. If the 'compressed string would not become smaller than the original string your method should return the original string**
 
-#### Write an althoritm such that if an element in an MxN matrix is 0 its entire row and column are set to 0
+- the compression makes only sense if we have more doubled letters than single ones, we could check it in advance
+- simple while
+- use string buffer <img src="./Images/Icons/repeat.png"width="12"/>
+- as string concatention is expensive and we do not want to use string buffer we need to count size of the target string <img src="./Images/Icons/repeat.png" width="12"/>
 
-#### Assume you have a method isSubstring which checks if one word is a substring of another Given two strings S1 and S2 Write code to check if S2 is a rotation of S1 using only one call to is substring
+<img src="./Images/Icons/no.png" width="12"/> **Given an image represented by NxN matrix write where each pixel in the image is 4 butes write a method to rotate the image by 90 degress. Can you do this in place?**
+
+- int[,] a = new int[4,4]
+```
+R,C=>R,C
+0,0=>0,3
+0,1=>1,3
+0,2=>2,3
+0,3=>3,3
+```
+
+```
+R,C=>R,C
+0,0=>0,3
+1,0=>0,2
+2,0=>0,1
+3,0=>0,0
+```
+
+```C#
+int dimension=a.GetLength(0);//3
+for(int row=0;row<a.GetLength(0);row++)
+{
+    for(int column=0;column<a.GetLegth(1);column++>)
+    {
+      b[column,dimension-row]=a[row,column]
+    }
+}
+```
+
+- multiple layers not only first row <img src="./Images/Icons/repeat.png" width="12"/>
+- not sure if I want to analyze it
+
+<img src="./Images/Icons/yes.png" width="12"/>  **Write an althoritm such that if an element in an MxN matrix is 0 its entire row and column are set to 0**
+- The matrix is done, so we need to look at the matrix and change it, everytime when we see the 0 we should set whole row and column to 0
+- The difficult part is when we will setup first time the row and column then we are loosing some information (we do not know if we covered some 0)
+- We could iterate table and save in two arrays rows and columns to zero
+
+
+<img src="./Images/Icons/no.png" width="12"/> **Assume you have a method isSubstring which checks if one word is a substring of another Given two strings S1 and S2 Write code to check if S2 is a rotation of S1 using only one call to is substring**
+
+- What is a rotation, we can move a part of the sentence to the end like=>ikel or =>keli
+- We can sort the string and call the method, but this could give us false positives  <img src="./Images/Icons/repeat.png" width="12"/>
+- better is join twice the word so kelikeli for sure has like inside
 
 
 ## WordDistance
