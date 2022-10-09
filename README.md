@@ -12,10 +12,43 @@
 
 # Quests
 
+
 Repository is used to store different coding quest.
 [Draw.io file](https://app.diagrams.net/#G1z-c3mN3V7xB3Kej71jyUp6bZdj1GPvhg)
 
 <!--more-->
+
+## Cracking the code interview
+
+### Array and strings(83,181)
+
+<img src="./Images/Icons/yes.png" alt="drawing" width="12"/> **Implement an algorithm to detrime if a string has all unique characters. What if you cannot use additional data structures** 
+
+- If string lenght is more than letters in alphabet => false
+- If we can use additional structure then iteration and hashset with seen letters - Time complexity: O(n) iteration+ n*O(1) Hashset=O(2n)
+- We can improve the hashset by creating array with all the characters in advance and null them when found in string
+- We can also sort the array and check if we have two letters the same next to each other O(n log(n))
+
+
+<img src="./Images/Icons/yes.png" alt="drawing" width="12"/> **Implement a function which reverses a null terminated string**
+
+- cat => tac
+- Create an additional array and rewrite string
+- while loop, with two pointers
+- for loop with one going from start and second string.lenght-1-firstIterator
+
+#### Given two strings write a method to decide if one is a permutation of the other
+
+#### Wrhite a method to replace all spaces in string with '%20' you may assume that the string has sufficient space at the end of the string. Please do it in place
+
+#### Implement a method to perform basic string compression using the counts of repated characters. aabcccccaa would become a2b1c5a3. If the 'compressed string would not become smaller than the original string your method should return the original string
+
+#### Given an image represented by NxN matrix write where each pixel in the image is 4 butes write a method to rotate the image by 90 degress. Can you do this in place?
+
+#### Write an althoritm such that if an element in an MxN matrix is 0 its entire row and column are set to 0
+
+#### Assume you have a method isSubstring which checks if one word is a substring of another Given two strings S1 and S2 Write code to check if S2 is a rotation of S1 using only one call to is substring
+
 
 ## WordDistance
 
