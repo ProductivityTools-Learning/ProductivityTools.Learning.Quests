@@ -55,7 +55,7 @@ Repository is used to store different coding quest.
 
 - the compression makes only sense if we have more doubled letters than single ones, we could check it in advance
 - simple while
-- use string buffer <img src="./Images/Icons/repeat.png"width="12"/>
+- use string buffer <img src="./Images/Icons/repeat.png" width="12"/>
 - as string concatention is expensive and we do not want to use string buffer we need to count size of the target string <img src="./Images/Icons/repeat.png" width="12"/>
 
 <img src="./Images/Icons/no.png" width="12"/> **Given an image represented by NxN matrix write where each pixel in the image is 4 butes write a method to rotate the image by 90 degress. Can you do this in place?**
@@ -102,6 +102,47 @@ for(int row=0;row<a.GetLength(0);row++)
 - What is a rotation, we can move a part of the sentence to the end like=>ikel or =>keli
 - We can sort the string and call the method, but this could give us false positives  <img src="./Images/Icons/repeat.png" width="12"/>
 - better is join twice the word so kelikeli for sure has like inside
+
+### LinkedLists (86,192)
+
+<img src="./Images/Icons/no.png" width="12"/> **Write code to remove duplicates from an unsorted linked list. How would you solve this problem if a temporary buffer is not allowed?**
+- create a hashset with all met values
+- sort list (with quick sort version)
+
+**Implement an alghorithm to find the kth to last element of the singly linked list.**
+- <img src="./Images/Icons/repeat.png" width="12"/> If the list link size is known we can just iterate to the lenght - k element
+- two pointers one which will be k elements behind the first one
+-  we need two pointers one which points to the current element and second which validates other nodes
+- <img src="./Images/Icons/repeat.png" width="12"/> Recursive algorithm recurses throught he list. When it hits the end the method basses back a counter set to 0. EAch parent call adds 1 to this counter. Problem here is how to return the node, we can print it or pass by the reference
+
+<img src="./Images/Icons/yes.png" width="12"/>  **Implement an alghoritm to delete a node in the middle onf the singly linked list given only acces to that node. Example Input: the node C from the linked list a->b->c->d->e**
+
+**Result: nothing is returned but the new linked list looks like a->b->d->e**
+- we need to rewrite all values from the next node to the current one and remove the pointer to the next one
+
+<img src="./Images/Icons/yes.png" width="12"/>  **Write a code to partition a linked list around a value x such that all nodes less than  x come before all nodes greated than equal to x**
+- Create two lists and merge as the last step
+
+**You have two number represented by a linked list where ach node contains a single digit. The digits are sorted in reverse order such taht 1's digit is at the head of the list. Write a function that addes the two numbers and returns the sum of as a linked list** CODE
+
+**Example:
+Input (7->1->6)+(5->9->2) that is 617 +295 
+Output (2->1->9) That is 912**
+
+**Follow-up suppose the digits are stored in forward order**
+
+**Given a circular linked list, implement an alghorithm which returns the node at the beginning of the loop**
+- We can save reference to each node in hashset to validate if we had already one item
+- We can go with two pinters, one which points current element and second which id going to the end of the list validating if they will meet again
+- To detect the loop we can use fast runner slow runner, they should meet eventualy
+- Not doing it too complex.
+
+**Implement a function to check if a linked list is a palindrome**
+- Palidrome so the numbers are the same forward and backwards - 12321
+- Is the list one way linked?
+- If we know the size we can reverse half of the list and compare
+- We can push all the items on the stack and take them , but then we will need to know what is the size
+
 
 
 ## WordDistance
