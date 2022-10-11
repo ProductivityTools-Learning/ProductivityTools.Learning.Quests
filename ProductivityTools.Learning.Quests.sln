@@ -9,6 +9,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WordDistance", "Quests\Word
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WordLadder", "Quests\WordLadder\WordLadder.csproj", "{58762ABC-4E92-4F10-9A80-9FA0EF876779}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BalancedBinaryTree", "Quests\BalancedBinaryTree\BalancedBinaryTree.csproj", "{7A038B47-EFD3-4EE2-9DB1-E06984C4AB67}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -23,6 +25,10 @@ Global
 		{58762ABC-4E92-4F10-9A80-9FA0EF876779}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{58762ABC-4E92-4F10-9A80-9FA0EF876779}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{58762ABC-4E92-4F10-9A80-9FA0EF876779}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7A038B47-EFD3-4EE2-9DB1-E06984C4AB67}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7A038B47-EFD3-4EE2-9DB1-E06984C4AB67}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7A038B47-EFD3-4EE2-9DB1-E06984C4AB67}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7A038B47-EFD3-4EE2-9DB1-E06984C4AB67}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -30,6 +36,7 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{BCFE4068-A8BA-4144-86B1-E5931FAB8230} = {4E85DA7D-1240-4D4A-A64C-1200F56C1A5F}
 		{58762ABC-4E92-4F10-9A80-9FA0EF876779} = {4E85DA7D-1240-4D4A-A64C-1200F56C1A5F}
+		{7A038B47-EFD3-4EE2-9DB1-E06984C4AB67} = {4E85DA7D-1240-4D4A-A64C-1200F56C1A5F}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {ED7373D9-598F-4731-9D51-EC7CC35216CC}

@@ -192,25 +192,51 @@ Output (2->1->9) That is 912**
 
 ### Tree and Graphs (95,)
 
-**Implement a function to check if a binary tree is balanced. For the purppose of this question a balanced tree is defined to be a tree such that the heights of the two subtrees of any node never differ by more than one**
+<img src="./Images/Icons/yes.png" width="12"/> **Implement a function to check if a binary tree is balanced. For the purppose of this question a balanced tree is defined to be a tree such that the heights of the two subtrees of any node never differ by more than one**
+- code written
 
-**Given a directed graph design an alghorithm to find out wheter there is a route between two nodes**
+<img src="./Images/Icons/yes.png" width="12"/> **Given a directed graph design an alghorithm to find out wheter there is a route between two nodes**
+- DFS, BFS
 
 **Given a sorted (increasing order) array with unique integer elements, write an althoritm to create a binary search tree with minimal height**
 
 **Given a binary tree, design an algorithm which creates a linked list of all the nodes at each depth (if you have a tree with dept D you will have D linked lists)**
 
 **Implement a function to check if a binary tree is binary search tree**
+- <img src="./Images/Icons/no.png" width="12"/>  again copy to the array and check if its ordered
+- <img src="./Images/Icons/no.png" width="12"/>  below is wrong BST, so if we want to traverse and compare we also need to pass the max value
 
-**Write an algorithm to find the next node (in-order sucessor) of a given node in a binary search tree. You may assume that each node has  a link to its parent**
-
-**Design an althoritm and write code to find the first common ancestor of two nodes in a binary tree. Avoid storing additional ndoes in a data structure. Not this is not necessarily a binary search tree**
-
-** You have two very large binary trees: T1 with milion of nodes and T2 with hundrets of nodes. Create algorithm to decide fi T2 is subtre of T1. A Tree T2 is subtree of T1 if there exists a node n in T1 such that the subtreee of n is identical to T2. That is if you cut off the tree at node n the two trees would be identical**
-
-** you are given a binary tree in which each node contains a value. Design an alghoritm to print all paths which sum to vigen value. The path does not need to start or end ethe root or a leaf**
+![](Images/2022-10-11-22-35-12.png)
 
 
+**Write an algorithm to find the next node (in-order sucessor) of a given node in a binary search tree. You may assume that each node ha  a link to its parent**
+
+- To be discussed during interview
+
+**Design an althoritm and write code to find the first common ancestor of two nodes in a binary tree. Avoid storing additional nodes in a data structure. Not this is not necessarily a binary search tree**
+
+- common ancestor - is a node which is a first parent for both of the nodes
+- <img src="./Images/Icons/yes.png" width="12"/>  We need to traverse to the tree, saving the path to each node. Then go through two paths and check where the paths diverge
+- <img src="./Images/Icons/no.png" width="12"/> do the nodes have liks to parents?
+
+**You have two very large binary trees: T1 with milion of nodes and T2 with hundrets of nodes. Create algorithm to decide fi T2 is subtre of T1. A Tree T2 is subtree of T1 if there exists a node n in T1 such that the subtreee of n is identical to T2. That is if you cut off the tree at node n the two trees would be identical**
+
+- <img src="./Images/Icons/yes.png" width="12"/>  I can look for the root of the subtree and then start to compare node by node
+- <img src="./Images/Icons/yes.png" width="12"/> If I can change the way how three is created I would calculate hashcode for each subtree somethink like blockchain
+- <img src="./Images/Icons/no.png" width="12"/> for smal tree we can change it into string and call substring
+
+
+<img src="./Images/Icons/no.png" width="12"/> **You are given a binary tree in which each node contains a value. Design an alghoritm to print all paths which sum to given value. The path does not need to start or end ethe root or a leaf**
+
+Simplify—What if the path had to start at the root, but could end anywhere? In this case, we would have a much easier problem. We could start from the root and branch left and right, computing the sum thus far on each path. When we find the sum, we print the current path. Note that we don't stop traversing that path just because we found the sum. Why? Because the path could continue on to a +1 node and a -1 node (or any other sequence of nodes where the additional values sum to 0), and the full path would still sum to sum. 
+Now, what if the path can start anywhere? In that case, we can make a small modifica-tion. On every node, we look "up" to see if we've found the sum. That is, rather than asking "Does this node start a path with the sum?;' we ask, "Does this node complete a path with the sum?" When we recurse through each node n, we pass the function the full path from root to n. This function then adds the nodes along the path in reverse order from n to root. When the sum of each subpath equals sum, then we print this path. 
+
+
+- Binary tree - is a tree data structure in which each node has at most two children, which are referred to as the left child and the right child. 
+- Binary search tree - also called an ordered or sorted binary tree, is a rooted binary tree data structure with the key of each internal node being greater than all the keys in the respective node's left subtree and less than the ones in its right subtre
+
+![](Images/2022-10-11-21-40-32.png)
+![](Images/2022-10-11-21-40-07.png)
 ## WordDistance
 
 ```
