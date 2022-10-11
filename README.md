@@ -190,6 +190,26 @@ Output (2->1->9) That is 912**
 <img src="./Images/Icons/yes.png" width="12"/> **An animal shelter holds only dogs and cats, and operates on a strictly first in first out basis. People must adopt either the "oldest" of all animals at the shelter or they can select whether they would prefer a dog or a cat (and will receive the oldest animal of that type). They cannot select which specific animal they would like. Create the data structures to maintain ths system and implement operations such as enquene, dequeneAny, dequeneDog and dequeneCat. You may use the bild in Linked List data structure**
 - simple algorithm
 
+### Tree and Graphs (95,)
+
+**Implement a function to check if a binary tree is balanced. For the purppose of this question a balanced tree is defined to be a tree such that the heights of the two subtrees of any node never differ by more than one**
+
+**Given a directed graph design an alghorithm to find out wheter there is a route between two nodes**
+
+**Given a sorted (increasing order) array with unique integer elements, write an althoritm to create a binary search tree with minimal height**
+
+**Given a binary tree, design an algorithm which creates a linked list of all the nodes at each depth (if you have a tree with dept D you will have D linked lists)**
+
+**Implement a function to check if a binary tree is binary search tree**
+
+**Write an algorithm to find the next node (in-order sucessor) of a given node in a binary search tree. You may assume that each node has  a link to its parent**
+
+**Design an althoritm and write code to find the first common ancestor of two nodes in a binary tree. Avoid storing additional ndoes in a data structure. Not this is not necessarily a binary search tree**
+
+** You have two very large binary trees: T1 with milion of nodes and T2 with hundrets of nodes. Create algorithm to decide fi T2 is subtre of T1. A Tree T2 is subtree of T1 if there exists a node n in T1 such that the subtreee of n is identical to T2. That is if you cut off the tree at node n the two trees would be identical**
+
+** you are given a binary tree in which each node contains a value. Design an alghoritm to print all paths which sum to vigen value. The path does not need to start or end ethe root or a leaf**
+
 
 ## WordDistance
 
