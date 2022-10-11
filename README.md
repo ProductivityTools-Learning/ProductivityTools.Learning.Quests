@@ -108,8 +108,9 @@ for(int row=0;row<a.GetLength(0);row++)
 <img src="./Images/Icons/no.png" width="12"/> **Write code to remove duplicates from an unsorted linked list. How would you solve this problem if a temporary buffer is not allowed?**
 - create a hashset with all met values
 - sort list (with quick sort version)
+- <img src="./Images/Icons/repeat.png" width="12"/> Two pointers, wone which points on the current element and second one which will look ofr duplicates
 
-**Implement an alghorithm to find the kth to last element of the singly linked list.**
+<img src="./Images/Icons/no.png" width="12"/> **Implement an alghorithm to find the kth to last element of the singly linked list.**
 - <img src="./Images/Icons/repeat.png" width="12"/> If the list link size is known we can just iterate to the lenght - k element
 - two pointers one which will be k elements behind the first one
 -  we need two pointers one which points to the current element and second which validates other nodes
@@ -137,12 +138,57 @@ Output (2->1->9) That is 912**
 - To detect the loop we can use fast runner slow runner, they should meet eventualy
 - Not doing it too complex.
 
-**Implement a function to check if a linked list is a palindrome**
+<img src="./Images/Icons/no.png" width="12"/> **Implement a function to check if a linked list is a palindrome**
 - Palidrome so the numbers are the same forward and backwards - 12321
 - Is the list one way linked?
-- If we know the size we can reverse half of the list and compare
+- <img src="./Images/Icons/repeat.png" width="12"/> If we know the size we can reverse half of the list and compare
 - We can push all the items on the stack and take them , but then we will need to know what is the size
 
+### Stack and Queues (89,211)
+<img src="./Images/Icons/no.png" width="12"/> **Describe how you could use a single array to implement three stacks**
+- Should I have 3 operatios PushA, PushB, PushC?
+- This is one dimension array of simple type?
+- Cam I assume size of the stacks?
+- Do the stack have the same size?
+- use modulo3 to chose the place
+- split the array into 3 parts
+- do we know what numbers we will put there? Maybe we could add like 100, 200, 300 to each number
+- stack has the O(1) complexity shoudl array have the same? - not sure if this is possible
+- <img src="./Images/Icons/repeat.png" width="12"/>  We can mark when the stack starts wich additional pointer, and we could have multiple sections for each stack 
+
+<img src="./Images/Icons/no.png" width="12"/> **How would you design a stack which in addition to push and pop also has a function min which returns the minimum element? Push, pop and min should all operate in O(1) time**
+- the easiest way it will be to iterate through stack and find the new number
+- but as it need sto peperate in O(1) time we need to store the value during the poping and pushing
+- difficult part is poping element as we need to remember where the last min was
+- we can store it in the dictionary or additional stack with the minimum values or we can store object on the stack with two properties
+- <img src="./Images/Icons/repeat.png" width="12"/> I would go with the separate stack as the minimum doesn't change often
+
+<img src="./Images/Icons/yes.png" width="12"/> **Imagine a (literal) stack of plates. If stack gets too high it might topple. Therfore in real life we would likely start a new stack when the previous stack exceeds some threshold. Implement a data structure SetOfStacks that mimics new stack once the precious one exceeds capacity. SetOfStacks.push and SetOcStacks.pop() should behave identically to a single stack (thit is pop() should return the same values as it would if there were just a single stack). Follow up Implement a function PopAt(int index) which performs a pop operation on specific sub-stack**
+- simple implemantation
+
+
+<img src="./Images/Icons/yes.png" width="12"/>**In the classic problem of Towers of Hanoi you have 3 towers and N disks of different sizes  which can slide onto any tower. The puzzle starts with disks sorted in ascending order of size from top to bottom (i.e. each disk sits on top of an even larger one) You have collowin constraints**
+
+**- only wone disk can be moved at a time**
+
+**- a disk is lid of the top of one tower onto the next tower**
+
+**- a disk can only be placed on top of the larger disk**
+- not interesting
+
+<img src="./Images/Icons/yes.png" width="12"/> **Implement a MyQuene class which implements a quene using two stacks**
+- if we have time when we are enquening and time when dequening we can move all the content from one stack to another when needed
+
+
+
+<img src="./Images/Icons/no.png" width="12"/> **Write a program to sort a stack in ascending order (with biggest items on top). You may use at most one additional stack to hold items, but you may not copy the elements into other data structure (such as array) the stack supports the followign operations: push, pop, peek, and is empty** 
+
+- We can sort S1 by inserting elements into correct place
+- add first element ot the S1
+- check if the second element should be below or above, if below move the elements on the S2
+
+<img src="./Images/Icons/yes.png" width="12"/> **An animal shelter holds only dogs and cats, and operates on a strictly first in first out basis. People must adopt either the "oldest" of all animals at the shelter or they can select whether they would prefer a dog or a cat (and will receive the oldest animal of that type). They cannot select which specific animal they would like. Create the data structures to maintain ths system and implement operations such as enquene, dequeneAny, dequeneDog and dequeneCat. You may use the bild in Linked List data structure**
+- simple algorithm
 
 
 ## WordDistance
